@@ -18,48 +18,112 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          header(),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('Promo today',
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    height: 200,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      physics: BouncingScrollPhysics(),
-                      children: <Widget>[promoCard('')],
+          child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            header(),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('Promo today',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold)),
+                    SizedBox(
+                      height: 15,
                     ),
-                  )
-                ],
-              ))
-        ],
+                    Container(
+                      height: 200,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        physics: BouncingScrollPhysics(),
+                        children: <Widget>[
+                          promoCard('one.jpg'),
+                          promoCard('two.jpg'),
+                          promoCard('three.jpg'),
+                          promoCard('four.jpg'),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    footer(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ))
+          ],
+        ),
       )),
     );
   }
 
   Widget promoCard(image) {
     return AspectRatio(
-      aspectRatio: 2 / 3,
+      aspectRatio: 2.62 / 3,
+      child: Container(
+        margin: EdgeInsets.only(right: 15),
+        decoration: BoxDecoration(
+          color: Colors.orange,
+          borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(
+              image: AssetImage('assets/images/$image'), fit: BoxFit.cover),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(begin: Alignment.bottomRight, stops: [
+                0.1,
+                0.9
+              ], colors: [
+                Colors.black.withOpacity(.8),
+                Colors.black.withOpacity(.1),
+              ])),
+        ),
+      ),
+    );
+  }
+
+  Widget footer() {
+    return Container(
+      height: 150,
+      decoration: BoxDecoration(
+        color: Colors.deepPurpleAccent,
+        borderRadius: BorderRadius.circular(20),
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage('assets/images/three.jpg'),
+        ),
+      ),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.orange,
-            borderRadius: BorderRadius.circular(20),
-            image: DecorationImage(
-                image: AssetImage('assets/one.jpg'), fit: BoxFit.cover)),
+          borderRadius: BorderRadius.circular(20),
+          gradient: LinearGradient(
+            begin: Alignment.bottomRight,
+            stops: [0.3, 0.9],
+            colors: [
+              Colors.black.withOpacity(.8),
+              Colors.black.withOpacity(.2),
+            ],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              'Best Design',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -85,7 +149,10 @@ class HomePage extends StatelessWidget {
               ),
               Text(
                 'Inspiration',
-                style: TextStyle(color: Colors.black87, fontSize: 40),
+                style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 20,
