@@ -115,12 +115,12 @@ class HomePage extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
           child: Align(
             alignment: Alignment.bottomLeft,
             child: Text(
               'Best Design',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: TextStyle(color: Colors.white, fontSize: 23),
             ),
           ),
         ),
@@ -134,6 +134,14 @@ class HomePage extends StatelessWidget {
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 3,
+                  blurRadius: 5,
+                  offset: Offset(0, 2),
+                ),
+              ],
               color: Colors.white,
               borderRadius: BorderRadius.vertical(bottom: Radius.circular(20))),
           padding: EdgeInsets.all(20),
